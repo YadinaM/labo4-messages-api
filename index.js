@@ -9,9 +9,16 @@ app.get('/api/v1/messages', (req, res) => {
   res.json({
     status : "success",
     message: "GET messages", 
-    data: [{
-      //als data een paar messages verzinnen,
-    }]
+    data: [
+            {
+              user: "John",
+              message: "Hello world"
+            },
+            {
+              user: "Sarah",
+              message: "Hello there"
+            },
+    ]
   })
 })
 
