@@ -49,6 +49,14 @@ app.put('/api/v1/messages/:id', (req, res) => {
   });
 });
 
+app.delete('/api/v1/messages/:id', (req, res) => {
+  const messageId = req.params.id;
+  
+  res.json({
+    message: `DELETING a message with id ${messageId}`
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
