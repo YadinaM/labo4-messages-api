@@ -1,9 +1,37 @@
-const express = require('express')
-const app = express()
-const port = 3000
+const express = require('express');
+const app = express();
+const port = 3000;
 
 const cors = require("cors");
 app.use(cors());
+const router = express.Router();
+app.use(express.json());
+
+app.get('/api/v1/messages', (req, res) => {
+  const username = req.query.user;
+
+  if (username) {
+    res.json({
+      status: "success",
+      message: `GET messages for username ${username}`,
+    });
+  } else {
+    res.json({
+      status: "success",
+      message: "GET messages",
+      data: [
+        {
+          user: "John",
+          message: "Hello world",
+        },
+        {
+          user: "Sarah",
+          message: "Hello there",
+        },
+      ],
+    });
+  }
+});
 
 app.get('/api/v1/messages/:id', (req, res) => {
   const messageId = req.params.id;
@@ -37,32 +65,6 @@ app.delete('/api/v1/messages/:id', (req, res) => {
   res.json({
     message: `DELETING a message with id ${messageId}`
   });
-});
-
-app.get('/api/v1/messages', (req, res) => {
-  const username = req.query.user;
-
-  if (username) {
-    res.json({
-      status: "success",
-      message: `GET messages for username ${username}`,
-    });
-  } else {
-    res.json({
-      status: "success",
-      message: "GET messages",
-      data: [
-        {
-          user: "John",
-          message: "Hello world",
-        },
-        {
-          user: "Sarah",
-          message: "Hello there",
-        },
-      ],
-    });
-  }
 });
 
 app.listen(port, () => {
