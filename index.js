@@ -5,8 +5,6 @@ const port = 3000
 const cors = require("cors");
 app.use(cors());
 
-
-
 app.get('/api/v1/messages/:id', (req, res) => {
   const messageId = req.params.id;
 
@@ -66,7 +64,6 @@ app.get('/api/v1/messages', (req, res) => {
     });
   }
 });
-
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
