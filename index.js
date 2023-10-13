@@ -51,9 +51,18 @@ app.put('/api/v1/messages/:id', (req, res) => {
 
 app.delete('/api/v1/messages/:id', (req, res) => {
   const messageId = req.params.id;
-  
+
   res.json({
     message: `DELETING a message with id ${messageId}`
+  });
+});
+
+app.get('/api/v1/messages/:username', (req, res) => {
+  const username = req.query.user;
+
+  res.json({
+    status: "success",
+    message: `GET messages for username ${username}`,
   });
 });
 
