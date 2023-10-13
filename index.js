@@ -5,6 +5,7 @@ const port = 3000
 const cors = require("cors");
 app.use(cors());
 
+
 app.get('/api/v1/messages', (req, res) => {
   res.json({
     status : "success",
@@ -19,9 +20,8 @@ app.get('/api/v1/messages', (req, res) => {
               message: "Hello there"
             },
     ]
-  })
-})
-
+  });
+});
 
 app.get('/api/v1/messages/:id', (req, res) => {
   const messageId = req.params.id;
@@ -32,6 +32,22 @@ app.get('/api/v1/messages/:id', (req, res) => {
   });
 });
 
+/*app.post("/api/v1/messages", (req, res) => {
+  let user = req.body.message.user;
+
+  res.json({
+    status: "success",
+    message: `POSTING a new message for user ${user}`,
+  });
+});*/
+
+app.put('/api/v1/messages/:id', (req, res) => {
+  const messageId = req.params.id;
+
+  res.json({
+    message: `UPDATING a message with id ${messageId}`
+  });
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
