@@ -32,14 +32,14 @@ app.get('/api/v1/messages/:id', (req, res) => {
   });
 });
 
-/*app.post("/api/v1/messages", (req, res) => {
+app.post("/api/v1/messages", (req, res) => {
   let user = req.body.message.user;
 
   res.json({
     status: "success",
-    message: `POSTING a new message for user ${user}`,
+    message: `POST a new message for user ${user}`,
   });
-});*/
+});
 
 app.put('/api/v1/messages/:id', (req, res) => {
   const messageId = req.params.id;
